@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Visualization Presentation</title>
+    <style>
+        /* Modern Professional Styling */
+        :root {
+            --bg-color: #0f172a;
+            --slide-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-green: #34d399;
+            --code-bg: #090d16;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            border-bottom: 1px solid #334155;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Presentation Container */
+        .ppt-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Individual Slide Layout */
+        .slide {
+            background-color: var(--slide-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 550px;
+        }
+
+        .slide-header {
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 20px 30px;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-header h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .slide-tag {
+            background-color: #312e81;
+            color: #c7d2fe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .slide-body {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            flex-grow: 1;
+        }
+
+        /* Full width exception for Title slides */
+        .slide-body.full-width {
+            grid-template-columns: 1fr;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .slide-explanation {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .slide-explanation p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .slide-explanation ul {
+            margin-left: 20px;
+            color: #cbd5e1;
+        }
+
+        .slide-explanation li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* Interactive Code Block Container */
+        .code-block-wrapper {
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--code-bg);
+            border: 1px solid #475569;
+        }
+
+        .code-header {
+            background-color: #1e293b;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid #475569;
+        }
+
+        .copy-btn {
+            background-color: #475569;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent);
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            line-height: 1.5;
+            text-align: left;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .slide-body {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Data Visualization Mastery</h1>
+        <p>Interactive Presentation Deck • Copy Code Snippets Directly into VS Code</p>
+    </header>
+
+    <div class="ppt-container">
+
+        <div class="slide">
+            <div class="slide-body full-width">
+                <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">Python Data Visualization</h2>
+                <p style="font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">
+                    A structured breakdown of Univariate, Bivariate, and Multivariate analysis using 
+                    <span class="highlight">Pandas</span> and <span class="highlight">Matplotlib</span>.
+                </p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>01. Environment & Data Setup</h2>
+                <span class="slide-tag">Initialization</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Before plotting any visual markers, we initialize the data frame infrastructure using <span class="highlight">Pandas</span>.</p>
+                    <ul>
+                        <li>Imports necessary libraries (`pandas` and `pyplot`).</li>
+                        <li>Creates a multi-featured dataset containing <span class="highlight">Salary</span>, <span class="highlight">Department</span>, and <span class="highlight">Age</span> dimensions.</li>
+                        <li>Outputs dataframe structure metrics via `df.shape`.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code>import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "salary": [25000,30000,37000,28000,39000,48000,55000,52000,35000,26000,27000,31000,33000,29000,40000,36000,34000,45000,47000,50000],
+    "dept": ["HR","IT","Finance","IT","HR","Finance","IT","HR","Finance","IT","HR","Finance","IT","HR","Finance","IT","HR","Finance","IT","HR"],
+    "age": [22,25,30,28,35,40,45,32,38,27,29,31,33,26,37,42,24,36,39,41]
+}
+
+df = pd.DataFrame(data)
+print(df)
+print(df.shape)</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>02. Univariate Analysis: Line Plot</h2>
+                <span class="slide-tag">Univariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Univariate plots focus on a single column to observe pattern sequences or trends.</p>
+                    <ul>
+                        <li><span class="highlight">color & marker</span>: Customizes aesthetic clarity for individual data tracking nodes.</li>
+                        <li><span class="highlight">linestyle & linewidth</span>: Adjusts connectivity styling options to enhance visual hierarchy.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Line plot to observe index sequence variations
+plt.plot(df["salary"], color='red', marker='o', 
+         linestyle=':', linewidth=2, markersize=8)
+
+plt.title("Salary Track Profile")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>03. Univariate Analysis: Histogram</h2>
+                <span class="slide-tag">Univariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Histograms display the frequency distribution of a continuous variable.</p>
+                    <ul>
+                        <li><span class="highlight">bins</span>: Dictates the number of intervals/bars to bundle your metrics.</li>
+                        <li><span class="highlight">edgecolor</span>: Separates layout boundaries to prevent bars from merging visually.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Histogram visualization for value frequencies
+plt.hist(df["salary"], color='blue', bins=5, edgecolor='black')
+
+plt.xlabel("Salary Range")
+plt.ylabel("Frequency")
+plt.title("Salary Distribution Overview")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>04. Box Plots & Outlier Tracking</h2>
+                <span class="slide-tag">Univariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Box plots visually isolate mathematical anomalies (outliers) outside normal variance metrics.</p>
+                    <ul>
+                        <li><span class="highlight">Middle Line</span>: Marks dataset Median value.</li>
+                        <li><span class="highlight">Box Boundaries</span>: Represents the Interquartile Range (IQR) from Q1 to Q3.</li>
+                        <li><span class="highlight">Outliers</span>: Values placed outside 1.5 times the IQR limits.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Box plot tracking for outliers identification
+plt.boxplot(df["salary"], vert=False)
+
+plt.xlabel("Salary")
+plt.title("Salary Distribution Outlier Boundaries")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>05. Categorical Distribution: Pie Chart</h2>
+                <span class="slide-tag">Univariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Categorical data relies on proportional splits. Pie charts illustrate share contributions efficiently.</p>
+                    <ul>
+                        <li>Line tracking charts cannot process categorical inputs natively.</li>
+                        <li><span class="highlight">value_counts()</span>: Computes categorical frequencies before visualization steps.</li>
+                        <li><span class="highlight">explode</span>: Highlights custom focal segments away from core graph structure.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Computing value balances
+count = df["dept"].value_counts()
+
+# Pie Chart production
+plt.pie(count, labels=count.index, autopct='%1.1f%%', 
+        explode=[0, 0.1, 0.2], colors=['red','blue','green'])
+
+plt.title("Department Distribution Shares")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>06. Categorical Distribution: Bar Chart</h2>
+                <span class="slide-tag">Univariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Bar charts excel at highlighting absolute item volumes across categories side-by-side.</p>
+                    <ul>
+                        <li><span class="highlight">count.index</span>: Forms X-axis categorization labels.</li>
+                        <li><span class="highlight">count.values</span>: Explicitly drives physical bar elevations.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Generating quantitative vertical bar comparative view
+plt.bar(count.index, count.values, color=['red','blue','green'])
+
+plt.xlabel("Department")    
+plt.ylabel("Number of Employees")
+plt.title("Department Allocation Count")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>07. Bivariate Analysis: Scatter Plot</h2>
+                <span class="slide-tag">Bivariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Bivariate analysis explores correlations and interactive behaviors between two features.</p>
+                    <ul>
+                        <li><span class="highlight">plt.scatter()</span>: Maps two numeric ranges (Age vs. Salary) onto a coordinate space.</li>
+                        <li>Helps highlight relational dependencies or cluster anomalies immediately.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Scatter plot charting correlation pairs
+plt.scatter(df["age"], df["salary"], color='blue')
+
+plt.xlabel("Age")
+plt.ylabel("Salary")
+plt.title("Relationship between Age and Salary")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>08. Ordered Relationship Trends</h2>
+                <span class="slide-tag">Bivariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Standard data sequences often lead to erratic, unreadable lines when tracing bivariate relationships over chronological indicators like age.</p>
+                    <ul>
+                        <li><span class="highlight">sort_values()</span>: Sorts features along the X-axis first to produce clean, readable trendlines.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Sort values to organize independent axis sequencing
+df_sorted = df.sort_values('age')
+
+plt.plot(df_sorted["age"], df_sorted["salary"], color='red', 
+         marker='o', linestyle='-', linewidth=2, markersize=8)
+
+plt.xlabel("Age")
+plt.ylabel("Salary")
+plt.title("Trend of Salary over Age (Sorted)")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>09. Multivariate Analysis: Grouped Box Plot</h2>
+                <span class="slide-tag">Multivariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Multivariate visualizations analyze multiple features concurrently to evaluate comparative behavior patterns.</p>
+                    <ul>
+                        <li>Filters numerical metrics (<span class="highlight">Salary</span>) independently across distinct categorical channels (<span class="highlight">Departments</span>).</li>
+                        <li>Allows side-by-side distribution comparisons across multiple groups in a single view.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Segregating subsets inside a matrix compilation list
+plt.boxplot([
+    df[df["dept"]=="HR"]["salary"],
+    df[df["dept"]=="IT"]["salary"],
+    df[df["dept"]=="Finance"]["salary"]
+], labels=["HR","IT","Finance"])
+
+plt.legend(["HR","IT","Finance"])
+plt.xlabel("Department")
+plt.ylabel("Salary")
+box_title = "Distribution of Salary by Department"
+plt.title(box_title)
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-header">
+                <h2>10. Aggregated Multivariate Share Tracking</h2>
+                <span class="slide-tag">Multivariate</span>
+            </div>
+            <div class="slide-body">
+                <div class="slide-explanation">
+                    <p>Using categorical values alongside structural data aggregations helps reveal broader organizational trends.</p>
+                    <ul>
+                        <li><span class="highlight">groupby()</span>: Collapses observations into targeted category summaries.</li>
+                        <li>Exposes average compensation variances across entire departments.</li>
+                    </ul>
+                </div>
+                <div class="code-block-wrapper">
+                    <div class="code-header"><span>Python Blueprint</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+<pre><code># Grouping and calculating sector averages
+salary_by_dept = df.groupby("dept")["salary"].mean()
+print(salary_by_dept)
+
+# Pie chart execution over structured segment fields
+plt.pie(salary_by_dept, labels=salary_by_dept.index, 
+        autopct='%1.2f%%', colors=['red','blue','green'])
+
+plt.title("Distribution of Average Salary by Department")
+plt.show()</code></pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Copy Code Script
+        function copyCode(button) {
+            const pre = button.parentElement.nextElementSibling;
+            const code = pre.querySelector('code');
+            
+            navigator.clipboard.writeText(code.innerText).then(() => {
+                button.innerText = "Copied!";
+                button.style.backgroundColor = "#34d399";
+                
+                setTimeout(() => {
+                    button.innerText = "Copy";
+                    button.style.backgroundColor = "#475569";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
